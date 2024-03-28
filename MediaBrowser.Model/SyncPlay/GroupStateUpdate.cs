@@ -10,10 +10,12 @@ namespace MediaBrowser.Model.SyncPlay
         /// </summary>
         /// <param name="state">The state of the group.</param>
         /// <param name="reason">The reason of the state change.</param>
-        public GroupStateUpdate(GroupStateType state, PlaybackRequestType reason)
+        /// <param name="initiator">The name of user who initiated the state change.</param>
+        public GroupStateUpdate(GroupStateType state, PlaybackRequestType reason, string initiator)
         {
             State = state;
             Reason = reason;
+            Initiator = initiator;
         }
 
         /// <summary>
@@ -27,5 +29,11 @@ namespace MediaBrowser.Model.SyncPlay
         /// </summary>
         /// <value>The reason of the state change.</value>
         public PlaybackRequestType Reason { get; }
+
+        /// <summary>
+        /// Gets the name of user who initiated the state change.
+        /// </summary>
+        /// <value>The name of user who initiated the state change.</value>
+        public string Initiator { get; }
     }
 }
