@@ -220,7 +220,7 @@ namespace MediaBrowser.Controller.SyncPlay.GroupStates
         protected void SendGroupStateUpdate(IGroupStateContext context, IGroupPlaybackRequest reason, SessionInfo session, CancellationToken cancellationToken)
         {
             // Notify relevant state change event.
-            var stateUpdate = new GroupStateUpdate(Type, reason.Action);
+            var stateUpdate = new GroupStateUpdate(Type, reason.Action, session.UserName);
             var update = context.NewSyncPlayGroupUpdate(GroupUpdateType.StateUpdate, stateUpdate);
             context.SendGroupUpdate(session, SyncPlayBroadcastType.AllGroup, update, cancellationToken);
         }
